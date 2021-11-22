@@ -1,6 +1,6 @@
 const express=require('express')
 const app=express()
-const port =400
+const port =process.env.PORT || 4000
 const social={
     "username":"sourav@yahoo.com",
     "follower":10,
