@@ -1,5 +1,10 @@
 const express=require('express')
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
 const app=express()
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 const port =process.env.PORT || 4000
 const social={
     "username":"sourav@yahoo.com",
@@ -42,10 +47,7 @@ app.get('/api/v1/linkedin',(req,res)=>{
     res.status(200).json(social2)
 })
 
-app.get('/api/v1/linkedin',(req,res)=>{
-    
-    res.status(200).json(social2)
-})
+
 
 app.get('/api/v1/:id/:extra',(req,res)=>{
     
@@ -54,6 +56,6 @@ app.get('/api/v1/:id/:extra',(req,res)=>{
 })
 
 app.listen(port,()=>{
-    console.log("Server is running at port",400)
+    console.log("Server is running at port",4000)
 
 })
